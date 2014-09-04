@@ -62,11 +62,11 @@ public class A3P415 {
      * @return the standard deviation as a float
      */
     static float GetStandardDeviation(ArrayList<Float> dataSet){
-        int size = dataSet.size();
-        float sumOfDataSquared = Summation(dataSet,2);
-        float sumSquaredOfData = (float)Math.pow(Summation(dataSet,1),2);
-        float deviationTop = sumOfDataSquared - (sumSquaredOfData / size);
-        return (float)Math.pow((deviationTop / (size - 1)),0.5);
+        int size = dataSet.size(); //The count
+        float sumOfDataSquared = Summation(dataSet,2); //sum of the squares of the data
+        float sumSquaredOfData = (float)Math.pow(Summation(dataSet,1),2); //sum of the data squared
+        float deviationTop = sumOfDataSquared - (sumSquaredOfData / size); //top part of the quotient
+        return (float)Math.pow((deviationTop / (size - 1)),0.5); 
     }
     /**
      * Method displays the data set, sum, average, and standard deviation
