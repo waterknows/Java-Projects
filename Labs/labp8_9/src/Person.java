@@ -4,9 +4,11 @@ Date: October 7, 2014
 Assignment: Lab 7, Problem 8.9
 */
 package labp8_9;
+
 public class Person{
     private String name;
     private int yearOfBirth;
+
     /**
      * Default constructor
      */
@@ -14,6 +16,7 @@ public class Person{
         name = "";
         yearOfBirth = 0;
     }
+
     /**
      * Constructor with two arg
      * @param newName name of person
@@ -23,6 +26,7 @@ public class Person{
         name = newName;
         yearOfBirth = newYear;
     }
+
     /**
      * returns the name of person
      * @return name
@@ -30,6 +34,7 @@ public class Person{
     public String getName(){
         return name;
     }
+
     /**
      * returns the year of birth of person
      * @return the year
@@ -37,6 +42,7 @@ public class Person{
     public int getYear(){
         return yearOfBirth;
     }
+
     /**
      * Sets the name of person
      * @param newName the name
@@ -44,6 +50,7 @@ public class Person{
     public void setName(String newName){
         name = newName;
     }
+
     /**
      * Sets the year of birth of person
      * @param newYear the year
@@ -51,6 +58,7 @@ public class Person{
     public void setYear(int newYear){
         yearOfBirth = newYear;
     }
+
     /**
      * Describes the person in string (name, year)
      * @return the string

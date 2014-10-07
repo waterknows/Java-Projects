@@ -3,16 +3,20 @@ Name: Joseph Park, Tony Salim
 Date: October 7, 2014
 Assignment: Lab 7, Problem 8.9
 */
+
 package labp8_9;
 public class Instructor extends Person{
+
     private double salary;
     /**
      * Default constructor
      */
+
     public Instructor(){
         super(); //Not necessary
         salary = 0.0;
     }
+    
     /**
      * Constructor with three arg
      * @param newName name of instructor
@@ -23,6 +27,7 @@ public class Instructor extends Person{
         super(newName,newYear); //Calls super constructor
         salary = newSalary;
     }
+    
     /**
      * returns the salary
      * @return salary
@@ -30,6 +35,7 @@ public class Instructor extends Person{
     public double getSalary(){
         return salary;
     }
+    
     /**
      * Sets the salary
      * @param newSalary  the salary
@@ -37,6 +43,7 @@ public class Instructor extends Person{
     public void setSalary(double newSalary){
         salary = newSalary;
     }
+    
     /**
      * Describes the instructor (name, year, salary)
      * @return the string

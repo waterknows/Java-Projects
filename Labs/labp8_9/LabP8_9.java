@@ -7,6 +7,8 @@ package labp8_9;
 
 public class LabP8_9 {
     public static void main(String[] args) {
+
+        //Testcase for Superclass
         Person P = new Person();
         Person Pa = new Person("A",2000);
         System.out.println("Default Person");
@@ -14,6 +16,7 @@ public class LabP8_9 {
         System.out.println("Person");
         System.out.println(Pa.toString());
         
+        //Testcase for Subclass(Student)
         Student S = new Student();
         Student Sb = new Student("b",2001,"CS");
         System.out.println("Default Student");
@@ -21,6 +24,7 @@ public class LabP8_9 {
         System.out.println("Student");
         System.out.println(Sb.toString());
         
+        //Testcase for Subclass(Instructor)
         Instructor I = new Instructor();
         Instructor Ic = new Instructor("c",2002,1.00);
         System.out.println("Default Instructor");

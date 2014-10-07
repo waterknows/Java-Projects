@@ -6,6 +6,7 @@ Assignment: Lab 7, Problem 8.9
 package labp8_9;
 public class Student extends Person{
     private String major;
+
     /**
      * Default constructor
      */
@@ -13,6 +14,7 @@ public class Student extends Person{
         super(); //Not necessary
         major = "";
     }
+
     /**
      * Constructor
      * @param newName name
@@ -23,6 +25,7 @@ public class Student extends Person{
         super(newName,newYear); //super constructor
         major = newMajor;
     }
+
     /**
      * returns the major
      * @return major
@@ -30,6 +33,7 @@ public class Student extends Person{
     public String getMajor(){
         return major;
     }
+
     /**
      * sets the major
      * @param newMajor major
@@ -37,6 +41,7 @@ public class Student extends Person{
     public void setMajor(String newMajor){
         major = newMajor;
     }
+
     /**
      * returns string of (name,year,major)
      * @return 
