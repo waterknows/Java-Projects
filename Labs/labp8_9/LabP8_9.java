@@ -1,10 +1,7 @@
 /*
-Name: Joseph Park
-Date: 
-Assignment: 
-Input: 
-Process: 
-Output: 
+Name: Joseph Park, Tony Salim
+Date: October 7, 2014
+Assignment: Lab 7, Problem 8.9
 */
 package labp8_9;
 
