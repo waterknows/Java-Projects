@@ -19,6 +19,17 @@ public class BetterRectangle extends Rectangle{
 	}
 	
 	/**
+	 * Constructor takes pos and height and width
+	 * @param x x coordinates input
+	 * @param y y coordinates input
+	 * @param width width of the rectangle
+	 * @param height height of the rectangle
+	 */
+	public BetterRectangle(int x, int y,int width, int height) { 
+		super(x,y,width,height);
+	}
+	
+	/**
 	 * Returns the perimeter
 	 * @return the perimeter in double
 	 */
