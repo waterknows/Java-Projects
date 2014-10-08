@@ -3,7 +3,7 @@ Name: Joseph Park, Tony Salim
 Date: October 7, 2014
 Assignment: Lab 7, Problem 8.9
 */
-package labp8_9;
+import labp8_9*;
 
 public class LabP8_9 {
     public static void main(String[] args) {
