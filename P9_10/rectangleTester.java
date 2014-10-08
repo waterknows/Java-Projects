@@ -10,16 +10,17 @@ import java.util.Scanner;
 public class rectangleTester {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner in = new Scanner(System.in);
-		
-		System.out.print("Please insert the height : ");
-		int rec_height = in.nextInt();
-		System.out.print("Please insert the width  : ");
-		int rec_width = in.nextInt();
+		try(Scanner in = new Scanner(System.in)){
+			System.out.print("Please insert the height : ");
+			int rec_height = in.nextInt();
+			System.out.print("Please insert the width  : ");
+			int rec_width = in.nextInt();
 
+			BetterRectangle R = new BetterRectangle(rec_width, rec_height);
+			System.out.println("Here's the area: " +  R.getArea());
+			System.out.println("Here's the perimeter: " +  R.getPerimeter());
+		}
 
-		System.out.println("Here's the area" +  );
 	}
 
 }
