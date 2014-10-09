@@ -4,31 +4,36 @@ import java.util.Date;
 
 public class Appointment {
 	private String description;
-	public Calendar AppCalendar;
+
+	int day;
+	int year;
+	int month;
+	
+	public Appointment(int year, int month, int day) {
+		this.day = day;
+		this.year = year;
+		this.month = month;
+	}
+
 	
 	public Appointment(){
+		this(0,0,0);
 		description = "";
-		AppCalendar = Calendar.getInstance();
-	}
-	
-	public Appointment(String newDescription, Date NewDate){
-		description = newDescription;
-		AppCalendar.setTime(NewDate);
+		
 	}
 	
 	public Appointment(String newDescription, int year, int month, int day){
+		this(year, month, day);
 		description = newDescription;
-//		Date Temp = new Date(year,month,day);
-//		AppCalendar.setTime(Temp);
-		AppCalendar.set(year,month,day);
 	}
+	
 	
 	public String getDescription(){
 		return description;
 	}
 	
 	public String getDate(){
-		return AppCalendar.toString();
+		return year + "/" + month + "/" + day;
 	}
 	
 	public void setDescription(String newDescription){
@@ -36,17 +41,18 @@ public class Appointment {
 	}
 	
 	public void setDate(int year, int month, int day){
-		AppCalendar.set(year,month,day);
+		this.day = day;
+		this.year = year;
+		this.month = month;
+		
 	}
 	
-	public void setDate(Date NewDate){
-		AppCalendar.setTime(NewDate);
-	}
 	
 	public boolean occursOn(int year, int month, int day){
-		Calendar Temp = Calendar.getInstance();
-		Temp.set(year,month,day);
-		return AppCalendar.compareTo(Temp) == 0;
+		if(this.year == year && this.month== month && this.day== day)
+			return true;
+		else
+			return false;
 	}
 	
 }
