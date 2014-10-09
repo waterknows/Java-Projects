@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java" deleted="false" description="fire up a project" enabled="true" name="setup">/* Name : ${Name}
+ * Date : ${date}
+ * Assignment : P${x}.${y}
+ * Description : ${des}
+ * /
+</template></templates>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java-statements" deleted="false" description="make debugging even easier" enabled="true" name="repeater">String option;
+boolean done = false;
+do {
+    ${}
+    System.out.print("are you done (y/n) : ");
+    option = in.next();
+    done = (option.equals("y") ? true : false);
+} while (!done);
+in.close();
+System.out.print("Cosing Program...");</template></templates>

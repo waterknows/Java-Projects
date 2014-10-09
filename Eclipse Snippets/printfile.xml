@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java-statements" deleted="false" description="Print a whole text file" enabled="true" name="printfile">try {
+	BufferedReader br = new BufferedReader(new FileReader("${filename}.txt"));
+	String line = null;
+	while ((line = br.readLine()) != null)
+		System.out.println(line);
+	br.close();
+} catch (Exception e) {
+	System.err.println("The file ${filename}.txt does not exist.");
+}
+</template></templates>

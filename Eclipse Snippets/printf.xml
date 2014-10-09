@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="java-statements" deleted="false" description="" enabled="true" name="printf">System.out.printf("${1}", ${var});</template></templates>
