@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Appointment {
 	private String description;
-	private Calendar AppCalendar;
+	public Calendar AppCalendar;
 	
 	public Appointment(){
 		description = "";
@@ -18,6 +18,8 @@ public class Appointment {
 	
 	public Appointment(String newDescription, int year, int month, int day){
 		description = newDescription;
+//		Date Temp = new Date(year,month,day);
+//		AppCalendar.setTime(Temp);
 		AppCalendar.set(year,month,day);
 	}
 	
@@ -36,6 +38,7 @@ public class Appointment {
 	public void setDate(int year, int month, int day){
 		AppCalendar.set(year,month,day);
 	}
+	
 	public void setDate(Date NewDate){
 		AppCalendar.setTime(NewDate);
 	}

@@ -10,6 +10,8 @@ public class Daily extends Appointment{
 	
 	public Daily(){
 		super();
+		StartDate = Calendar.getInstance();
+		EndDate = Calendar.getInstance();
 	}
 	
 	public Daily(String newDescription, Date NewDate){
