@@ -41,7 +41,7 @@ public class Appointment {
 	}
 	
 	public boolean occursOn(int year, int month, int day){
-		Calendar Temp = null;
+		Calendar Temp = Calendar.getInstance();
 		Temp.set(year,month,day);
 		return AppCalendar.compareTo(Temp) == 0;
 	}
