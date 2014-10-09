@@ -28,6 +28,9 @@ public class Appointment {
 		description = newDescription;
 	}
 	
+	public void setDate(int year, int month, int day){
+		AppCalendar.set(year,month,day);
+	}
 	public void setDate(Date NewDate){
 		AppCalendar.setTime(NewDate);
 	}
