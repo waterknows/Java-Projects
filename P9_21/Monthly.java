@@ -10,6 +10,7 @@ public class Monthly extends Appointment{
 	private int dayOfMonth;
 	public Monthly(){
 		super();
+		startMonth = endMonth = dayOfMonth = 0;
 	}
 	public Monthly(String newDescription, Date NewDate){
 		super(newDescription,NewDate);
