@@ -1,35 +1,31 @@
+import java.sql.Date;
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class Daily extends Appointment{
 	//Appointment that occurs daily in a date range
 	//Occurs everyday within that range
-	private Calendar StartDate;
-	private Calendar EndDate;
+
+	private int startYear;
+	private int startMonth;
+	private int startDay;
+	private int endYear;
+	private int endMonth;
+	private int endDay;
 	
 	public Daily(){
 		super();
-		StartDate = Calendar.getInstance();
-		EndDate = Calendar.getInstance();
-	}
-	
-	public Daily(String newDescription, Date NewDate){
-		super(newDescription,NewDate);
-		StartDate = Calendar.getInstance();
-		EndDate = Calendar.getInstance();
+		startYear = startMonth = startDay = endYear = endMonth = endDay = 0;
 	}
 	
 	public Daily(String newDescription, int year, int month, int day){
 		super(newDescription,year,month,day);
-		StartDate = Calendar.getInstance();
-		EndDate = Calendar.getInstance();
+		startYear = startMonth = startDay = endYear = endMonth = endDay = 0;
 	}
 	
-	public Daily(String newDescription, Date NewDate, Date NewStart, Date NewEnd){
-		super(newDescription,NewDate);
-		StartDate.setTime(NewStart);
-		EndDate.setTime(NewEnd);
+	public Daily(String newDescription, int year, int month, int day, Date StartDate, Date EndDate){
+		super(newDescription,year,month,day);
+		startYear = StartDate.getYear();
 	}
 	
 	public boolean occursOn(int year, int month, int day){

@@ -1,4 +1,4 @@
-import java.util.Date;
+
 
 
 public class Onetime extends Appointment{
@@ -7,7 +7,7 @@ public class Onetime extends Appointment{
 	public Onetime(){
 		super();
 	}
-	public Onetime(String newDescription, Date NewDate){
-		super(newDescription,NewDate);
+	public Onetime(String newDescription, int newYear, int newMonth, int newDay){
+		super(newDescription,newYear,newMonth,newDay);
 	}
 }

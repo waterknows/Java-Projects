@@ -1,5 +1,3 @@
-import java.util.Calendar;
-import java.util.Date;
 
 
 public class Monthly extends Appointment{
@@ -12,18 +10,13 @@ public class Monthly extends Appointment{
 		super();
 		startMonth = endMonth = dayOfMonth = 0;
 	}
-	public Monthly(String newDescription, Date NewDate){
-		super(newDescription,NewDate);
+	public Monthly(String newDescription, int newYear, int newMonth, int newDay){
+		super(newDescription,newYear, newMonth, newDay);
 		startMonth = endMonth = dayOfMonth = 0;
 	}
 	
-	public Monthly(String newDescription, int year, int month, int day){
-		super(newDescription,year,month,day);
-		startMonth = endMonth = dayOfMonth = 0;
-	}
-	
-	public Monthly(String newDescription, Date NewDate, int startMonth, int endMonth, int dayOf){
-		super(newDescription,NewDate);
+	public Monthly(String newDescription, int newYear, int newMonth, int newDay, int startMonth, int endMonth, int dayOf){
+		super(newDescription,newYear,newMonth,newDay);
 		this.startMonth = startMonth;
 		this.endMonth = endMonth;
 		dayOfMonth = dayOf;
@@ -42,8 +35,6 @@ public class Monthly extends Appointment{
 	}
 	
 	public boolean occursOn(int year, int month, int day){
-		Calendar Temp = Calendar.getInstance();
-		Temp.set(year, month,day);
 		return month >= startMonth && month <= endMonth;
 	}
 	
