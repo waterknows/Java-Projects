@@ -16,6 +16,11 @@ public class Appointment {
 		AppCalendar.setTime(NewDate);
 	}
 	
+	public Appointment(String newDescription, int year, int month, int day){
+		description = newDescription;
+		AppCalendar.set(year,month,day);
+	}
+	
 	public String getDescription(){
 		return description;
 	}
