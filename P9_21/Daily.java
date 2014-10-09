@@ -31,7 +31,7 @@ public class Daily extends Appointment{
 	}
 	
 	public boolean occursOn(int year, int month, int day){
-		Calendar Temp = null;
+		Calendar Temp = Calendar.getInstance();
 		Temp.set(year,month,day);
 		return Temp.compareTo(StartDate) >= 0 && Temp.compareTo(EndDate) <= 0;
 	}

@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -33,6 +34,16 @@ public class Monthly extends Appointment{
 	
 	public int getEnd(){
 		return endMonth;
+	}
+	
+	public int getDayOf(){
+		return dayOfMonth;
+	}
+	
+	public boolean occursOn(int year, int month, int day){
+		Calendar Temp = Calendar.getInstance();
+		Temp.set(year, month,day);
+		return month >= startMonth && month <= endMonth;
 	}
 	
 }
