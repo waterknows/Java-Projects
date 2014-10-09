@@ -1,0 +1,29 @@
+
+" ESC becomes jk
+inoremap jk <esc>
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+" "II go to just before the first non-blank text of the line
+" "AA go to the end of the line
+" "OO start editing on a new line above the current line
+inoremap II <Esc>I 
+inoremap AA <Esc>A
+inoremap OO <Esc>O
+
+" "CC change what is on the right of the cursor
+" "SS change the whole line
+" "DD delete the current line (end in normal mode)
+" "UU undo
+inoremap CC <Esc>C
+inoremap SS <Esc>S
+inoremap DD <Esc>dd
+inoremap UU <Esc>u
+
+" This moves to the end of line when you are done (backwards search)
+inoremap <C-e> <C-o>A
+
+map <space> /
+map <c-space> ?
