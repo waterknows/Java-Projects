@@ -3,23 +3,19 @@ import java.util.Date;
 
 
 public class Appointment {
-	private String description;
-
+	private String description = "";
 	int day;
 	int year;
 	int month;
+	
+	public Appointment(){
+		this(0,0,0);
+	}
 	
 	public Appointment(int year, int month, int day) {
 		this.day = day;
 		this.year = year;
 		this.month = month;
-	}
-
-	
-	public Appointment(){
-		this(0,0,0);
-		description = "";
-		
 	}
 	
 	public Appointment(String newDescription, int year, int month, int day){
@@ -37,6 +33,7 @@ public class Appointment {
 	}
 	
 	public void setDescription(String newDescription){
+		System.out.println("Printing ");
 		description = newDescription;
 	}
 	
