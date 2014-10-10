@@ -14,31 +14,28 @@ public class testerClass {
 		String temp;
 		
 		//testcase for Appointments
-		Appointment[] Reminders = new  Appointment[5];
-//		for(int i = 0; i < 5; i++){
-//			Reminders[i] = new Appointment("Hello",2014,10,9);
-//		}
-//		for (Appointment appointment : Reminders) {
-//			
-////			appointment.setDate(2014, 10, 9); // make every appointment occurs today
-//			System.out.println("For date " + appointment.getDate());
-//			System.out.print("Appointment description : ");
-//			temp = in.next(); // get description
-//			appointment.setDescription(temp);
-//		}
+		Appointment[] reminders = new  Appointment[5];
+		for(int i = 0; i < 5; i++){
+			reminders[i] = new Appointment(); //by default, it should be set to today's date
+			System.out.println("For date " + reminders[i].getDate());
+			System.out.print("Appointment description : "); 
+			temp = in.nextLine(); // get description
+			reminders[i].setDescription(temp);
+		}
 		
-		Appointment app = new Appointment(":",2014,10,9);
-		//debug : print all the filled appointments
-//		for (Appointment appointment : Reminders) {
-			System.out.println(app.AppCalendar.toString());
+		for (Appointment app: reminders) {
 			System.out.println("Date : " + app.getDate());
-			System.out.println("Appointment : " + app.getDescription() + "\n----");
-//		}
-//		
-		//testcase for Daily
+			System.out.println("Appointment : " + app.getDescription());
+		}
 		
-		
-		
+		//try to print all appointments on the day
+		// ex : 2014-10-10
+		System.out.println("Here's the list of appointments on 2014-10-10.");
+		for (Appointment memo : reminders) {
+			if(memo.occursOn(2014, 10, 10))
+				System.out.println("- " + memo.getDescription());
+		}
+
 		in.close();
 	}
 
