@@ -5,6 +5,8 @@
 
 # eclipse specific git ignore
 *.pydevproject
+.metadata
+eclimd.log
 *bin/**
 bin/**
 tmp/**

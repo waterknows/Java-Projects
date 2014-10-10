@@ -1,3 +1,4 @@
-GitRepositoriesView.GitDirectories=/home/carvantes/git/Python/.git\:/home/carvantes/git/CS002/.git\:/home/carvantes/git/Minecraft/.git\:/home/carvantes/git/JavaProjects/.git\:/home/carvantes/git/openGL/.git\:/home/carvantes/git/MyScripts/.git\:/home/carvantes/git/AndroidTest/.git\:/home/carvantes/git/Joseph_JavaProjects/.git\:
-RepositorySearchDialogSearchPath=/home/carvantes/git/Joseph_JavaProjects
+GitRepositoriesView.GitDirectories=/home/carvantes/git/Java/.git\:/home/carvantes/git/OpenGL/.git\:/home/carvantes/git/AndroidTest/.git\:/home/carvantes/git/Joseph_Java/.git\:/home/carvantes/git/tony-lim.github.io/.git\:/home/carvantes/git/MyArduino/.git\:/home/carvantes/git/weblord/.git\:/home/carvantes/git/MyPython/.git\:/home/carvantes/git/javawebapplication/.git\:/home/carvantes/git/MyScripts/.git\:/home/carvantes/git/CS002/.git\:
+RepositorySearchDialogDeepSearch=true
+RepositorySearchDialogSearchPath=/home/carvantes/git
 eclipse.preferences.version=1
