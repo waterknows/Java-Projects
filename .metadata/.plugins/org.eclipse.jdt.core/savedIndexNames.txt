@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+/home/carvantes/git/Joseph_JavaProjects/.metadata/.plugins/org.eclipse.jdt.core
+692474726.index
