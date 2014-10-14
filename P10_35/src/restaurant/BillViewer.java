@@ -48,9 +48,10 @@ public class BillViewer extends JFrame{
 		public void actionPerformed(ActionEvent event){
 			String itemInfo = event.getActionCommand();
 			int index = getIndexOf(itemInfo,'\n');
-			ItemFood Temp = new ItemFood(itemInfo.substring(0,index - 1),Double.parseDouble(itemInfo.substring(index + 1)));
+			ItemFood Temp = new ItemFood(itemInfo.substring(0,index),Double.parseDouble(itemInfo.substring(index + 1)));
 			ItemBill.add_item(Temp);
-			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\nTotal: " + ItemBill.getTotalPrice());
+			String price = String.format("%.2f",ItemBill.getTotalPrice());
+			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 		}
 	}
 	class SubmitListener implements ActionListener{
