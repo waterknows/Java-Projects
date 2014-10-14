@@ -15,7 +15,7 @@ public class BillViewer extends JFrame{
 //	private JButton buttonList[NUM_OF_BUTTONS];
 	private static final int FRAME_WIDTH = 200;
 	private static final int FRAME_HEIGHT = 400;
-	private static final int NUM_OF_BUTTONS = 10;
+//	private static final int NUM_OF_BUTTONS = 10;
 	private static final int AREA_ROWS = 10;
 	private static final int AREA_COLUMNS = 2;
 	private static final int TEXT_WIDTH = 10;
@@ -35,17 +35,20 @@ public class BillViewer extends JFrame{
 	private JTextArea billDisplayArea;
 	private JLabel fieldNameLabel;
 	private JLabel fieldPriceLabel;
-	//Add Bill object
+	private final Bill ItemBill;
 	
 	public BillViewer(){
 		createComponents();
+		ItemBill = new Bill();
 	}
 	
 	class AddItemListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
 			String itemInfo = event.getActionCommand();
 			int index = getIndexOf(itemInfo,'\n');
-			billDisplayArea.setText(billDisplayArea.getText() + itemInfo.substring(0,index - 1) + itemInfo.substring(index + 1) + "\n");
+			ItemFood Temp = new ItemFood(itemInfo.substring(0,index - 1),Double.parseDouble(itemInfo.substring(index + 1)));
+			ItemBill.add_item(Temp);
+			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\n" + ItemBill.getTotalPrice());
 		}
 	}
 	class SubmitListener implements ActionListener{
