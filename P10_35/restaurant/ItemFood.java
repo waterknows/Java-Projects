@@ -1,4 +1,4 @@
-package Restaurant;
+package restaurant;
 
 public class ItemFood {
 
