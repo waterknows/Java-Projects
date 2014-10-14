@@ -109,37 +109,37 @@ public class BillViewer extends JFrame{
 	private void createButtons(){
 		//Create buttons
 		ActionListener listener = new AddItemListener();
-		button1 = new JButton("");
+		button1 = new JButton("Burrito\n5.99");
 		button1.addActionListener(listener);
 		button1.setActionCommand(button1.getText());
-		button2 = new JButton("");
+		button2 = new JButton("Tacos\n2.99");
 		button2.addActionListener(listener);
 		button2.setActionCommand(button2.getText());
-		button3 = new JButton("");
+		button3 = new JButton("Sushi\n10.98");
 		button3.addActionListener(listener);
 		button3.setActionCommand(button3.getText());
-		button4 = new JButton("");
+		button4 = new JButton("Fish\n14.59");
 		button4.addActionListener(listener);
 		button4.setActionCommand(button4.getText());
-		button5 = new JButton("");
+		button5 = new JButton("Soda\n1.28");
 		button5.addActionListener(listener);
 		button5.setActionCommand(button5.getText());
-		button6 = new JButton("");
+		button6 = new JButton("Le Cavier\n29.99");
 		button6.addActionListener(listener);
 		button6.setActionCommand(button6.getText());
-		button7 = new JButton("");
+		button7 = new JButton("Water\n0.01");
 		button7.addActionListener(listener);
 		button7.setActionCommand(button7.getText());
-		button8 = new JButton("");
+		button8 = new JButton("Banana\n0.98");
 		button8.addActionListener(listener);
 		button8.setActionCommand(button8.getText());
-		button9 = new JButton("");
+		button9 = new JButton("Shwarma\n4.99");
 		button9.addActionListener(listener);
 		button9.setActionCommand(button9.getText());
-		button10 = new JButton("");
+		button10 = new JButton("Chocolate\n102.09");
 		button10.addActionListener(listener);
 		button10.setActionCommand(button10.getText());
-		enterButton = new JButton("");
+		enterButton = new JButton("Submit");
 		enterButton.addActionListener(listener);
 		enterButton.setActionCommand(newItemName.getText() + "\n" + newItemPrice.getText());
 		
