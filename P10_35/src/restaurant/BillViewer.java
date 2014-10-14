@@ -57,8 +57,8 @@ public class BillViewer extends JFrame{
 		}
 	}
 	private void createComponents(){
-		createButtons();
 		createTextFields();
+		createButtons();
 		createPanels();
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);	
 	}
