@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -47,6 +48,11 @@ public class BillViewer extends JFrame{
 			billDisplayArea.setText(billDisplayArea.getText() + itemInfo.substring(0,index - 1) + itemInfo.substring(index + 1) + "\n");
 		}
 	}
+	class SubmitListener implements ActionListener{
+		public void actionPerformed(ActionEvent event){
+			
+		}
+	}
 	private void createComponents(){
 		createButtons();
 		createTextFields();
@@ -65,7 +71,7 @@ public class BillViewer extends JFrame{
 		buttonPanel.add(button8);
 		buttonPanel.add(button9);
 		buttonPanel.add(button10);
-		
+
 		JPanel textEnterPanel = new JPanel();
 		textEnterPanel.add(fieldNameLabel);
 		textEnterPanel.add(newItemName);
@@ -73,8 +79,9 @@ public class BillViewer extends JFrame{
 		textEnterPanel.add(newItemPrice);
 		textEnterPanel.add(enterButton);
 		
+		JScrollPane displayScroll = new JScrollPane(billDisplayArea);
 		JPanel textDisplayPanel = new JPanel();
-		textDisplayPanel.add(billDisplayArea);
+		textDisplayPanel.add(displayScroll);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.add(buttonPanel);
@@ -131,7 +138,7 @@ public class BillViewer extends JFrame{
 		button10.setActionCommand(button10.getText());
 		enterButton = new JButton("");
 		enterButton.addActionListener(listener);
-		enterButton.setActionCommand(enterButton.getText());
+		enterButton.setActionCommand(newItemName.getText() + "\n" + newItemPrice.getText());
 		
 	}
 	private int getIndexOf(String string, char ch){
