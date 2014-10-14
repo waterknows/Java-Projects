@@ -1,8 +1,10 @@
 package restaurant;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,9 +18,9 @@ public class BillViewer extends JFrame{
 	private static final int FRAME_WIDTH = 200;
 	private static final int FRAME_HEIGHT = 400;
 //	private static final int NUM_OF_BUTTONS = 10;
-	private static final int AREA_ROWS = 10;
-	private static final int AREA_COLUMNS = 2;
-	private static final int TEXT_WIDTH = 10;
+	private static final int AREA_ROWS = 12;
+	private static final int AREA_COLUMNS = 5;
+	private static final int TEXT_WIDTH = 5;
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
@@ -63,17 +65,20 @@ public class BillViewer extends JFrame{
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);	
 	}
 	private void createPanels(){
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.add(button1);
-		buttonPanel.add(button2);
-		buttonPanel.add(button3);
-		buttonPanel.add(button4);
-		buttonPanel.add(button5);
-		buttonPanel.add(button6);
-		buttonPanel.add(button7);
-		buttonPanel.add(button8);
-		buttonPanel.add(button9);
-		buttonPanel.add(button10);
+		JPanel buttonPanel1 = new JPanel();
+		buttonPanel1.add(button1);
+		buttonPanel1.add(button2);
+		buttonPanel1.add(button3);
+		buttonPanel1.add(button4);
+		buttonPanel1.add(button5);
+		
+		
+		JPanel buttonPanel2 = new JPanel();
+		buttonPanel2.add(button6);
+		buttonPanel2.add(button7);
+		buttonPanel2.add(button8);
+		buttonPanel2.add(button9);
+		buttonPanel2.add(button10);
 
 		JPanel textEnterPanel = new JPanel();
 		textEnterPanel.add(fieldNameLabel);
@@ -85,9 +90,11 @@ public class BillViewer extends JFrame{
 		JScrollPane displayScroll = new JScrollPane(billDisplayArea);
 		JPanel textDisplayPanel = new JPanel();
 		textDisplayPanel.add(displayScroll);
-		
+
 		JPanel mainPanel = new JPanel();
-		mainPanel.add(buttonPanel);
+		mainPanel.add(buttonPanel1);
+		mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		mainPanel.add(buttonPanel2);
 		mainPanel.add(textEnterPanel);
 		mainPanel.add(textDisplayPanel);
 		
