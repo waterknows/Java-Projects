@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 
 public class BillViewer extends JFrame{
 //	private JButton buttonList[NUM_OF_BUTTONS];
-	private static final int FRAME_WIDTH = 200;
-	private static final int FRAME_HEIGHT = 400;
+	private static final int FRAME_WIDTH = 700;
+	private static final int FRAME_HEIGHT = 600;
 //	private static final int NUM_OF_BUTTONS = 10;
 	private static final int AREA_ROWS = 15;
 	private static final int AREA_COLUMNS = 20;
@@ -46,11 +46,20 @@ public class BillViewer extends JFrame{
 	
 	class AddItemListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
+			enterButton.setActionCommand(newItemName.getText() + "\n" + newItemPrice.getText());
 			String itemInfo = event.getActionCommand();
 			int index = getIndexOf(itemInfo,'\n');
+			if(index == -1)
+				System.out.println("Error");
+			System.out.println("Before Parse");
+			System.out.println(itemInfo);
+			System.out.println(itemInfo.substring(0,index));
+			System.out.println(Double.parseDouble(itemInfo.substring(index + 1)));
+
 			ItemFood Temp = new ItemFood(itemInfo.substring(0,index),Double.parseDouble(itemInfo.substring(index + 1)));
 			ItemBill.add_item(Temp);
 			String price = String.format("%.2f",ItemBill.getTotalPrice());
+			System.out.println(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 		}
 	}
@@ -149,7 +158,7 @@ public class BillViewer extends JFrame{
 		button10.setActionCommand(button10.getText());
 		enterButton = new JButton("Submit");
 		enterButton.addActionListener(listener);
-		enterButton.setActionCommand(newItemName.getText() + "\n" + newItemPrice.getText());
+		
 		
 	}
 	private int getIndexOf(String string, char ch){
