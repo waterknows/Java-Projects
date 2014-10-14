@@ -46,26 +46,28 @@ public class BillViewer extends JFrame{
 	
 	class AddItemListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			enterButton.setActionCommand(newItemName.getText() + "\n" + newItemPrice.getText());
 			String itemInfo = event.getActionCommand();
 			int index = getIndexOf(itemInfo,'\n');
 			if(index == -1)
 				System.out.println("Error");
-			System.out.println("Before Parse");
-			System.out.println(itemInfo);
-			System.out.println(itemInfo.substring(0,index));
-			System.out.println(Double.parseDouble(itemInfo.substring(index + 1)));
 
 			ItemFood Temp = new ItemFood(itemInfo.substring(0,index),Double.parseDouble(itemInfo.substring(index + 1)));
 			ItemBill.add_item(Temp);
 			String price = String.format("%.2f",ItemBill.getTotalPrice());
-			System.out.println(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 		}
 	}
 	class SubmitListener implements ActionListener{
 		public void actionPerformed(ActionEvent event){
-			
+			String itemInfo = newItemName.getText() + "\n" + newItemPrice.getText();
+			int index = getIndexOf(itemInfo,'\n');
+			if(index == -1)
+				System.out.println("Error");
+
+			ItemFood Temp = new ItemFood(itemInfo.substring(0,index),Double.parseDouble(itemInfo.substring(index + 1)));
+			ItemBill.add_item(Temp);
+			String price = String.format("%.2f",ItemBill.getTotalPrice());
+			billDisplayArea.setText(ItemBill.getItemAndPrice() + "\nTotal: " + price);
 		}
 	}
 	private void createComponents(){
@@ -126,6 +128,7 @@ public class BillViewer extends JFrame{
 	private void createButtons(){
 		//Create buttons
 		ActionListener listener = new AddItemListener();
+		ActionListener submitlisten = new SubmitListener();
 		button1 = new JButton("Burrito\n5.99");
 		button1.addActionListener(listener);
 		button1.setActionCommand(button1.getText());
@@ -157,7 +160,7 @@ public class BillViewer extends JFrame{
 		button10.addActionListener(listener);
 		button10.setActionCommand(button10.getText());
 		enterButton = new JButton("Submit");
-		enterButton.addActionListener(listener);
+		enterButton.addActionListener(submitlisten);
 		
 		
 	}
