@@ -80,6 +80,8 @@ public class BillViewer extends JFrame{
 		mainPanel.add(buttonPanel);
 		mainPanel.add(textEnterPanel);
 		mainPanel.add(textDisplayPanel);
+		
+		add(mainPanel);
 	}
 	private void createTextFields(){
 		//Create labels
@@ -102,33 +104,34 @@ public class BillViewer extends JFrame{
 		button1.setActionCommand(button1.getText());
 		button2 = new JButton("");
 		button2.addActionListener(listener);
-		button2.setActionCommand(button1.getText());
+		button2.setActionCommand(button2.getText());
 		button3 = new JButton("");
 		button3.addActionListener(listener);
-		button3.setActionCommand(button1.getText());
+		button3.setActionCommand(button3.getText());
 		button4 = new JButton("");
 		button4.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button4.setActionCommand(button4.getText());
 		button5 = new JButton("");
 		button5.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button5.setActionCommand(button5.getText());
 		button6 = new JButton("");
 		button6.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button6.setActionCommand(button6.getText());
 		button7 = new JButton("");
 		button7.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button7.setActionCommand(button7.getText());
 		button8 = new JButton("");
 		button8.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button8.setActionCommand(button8.getText());
 		button9 = new JButton("");
 		button9.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button9.setActionCommand(button9.getText());
 		button10 = new JButton("");
 		button10.addActionListener(listener);
-		button1.setActionCommand(button1.getText());
+		button10.setActionCommand(button10.getText());
 		enterButton = new JButton("");
 		enterButton.addActionListener(listener);
+		enterButton.setActionCommand(enterButton.getText());
 		
 	}
 	private int getIndexOf(String string, char ch){
