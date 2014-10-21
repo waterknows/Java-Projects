@@ -16,6 +16,7 @@ public class RectangleComponent extends JComponent
 	private int xLeft;
 	private int yTop;
 	private float R, G, B;
+	private Color myColor;
 	
 	public RectangleComponent()
 	{
@@ -24,6 +25,7 @@ public class RectangleComponent extends JComponent
 		B = 0.0f;
 		xLeft = 0;
 		yTop = 0;
+		myColor = new Color(R,G,B);
 	}
 	public void paintComponent(Graphics g)
 	{
@@ -31,9 +33,10 @@ public class RectangleComponent extends JComponent
 			R = (float)(Math.random());
 			G = (float)(Math.random());
 			B = (float)(Math.random());
+			myColor = new Color(R,G,B);
 			hitwall = false;
 		}
-		g.setColor(new Color(R,G,B));
+		g.setColor(myColor);
 		g.fillRect(xLeft, yTop, RECTANGLE_WIDTH, RECTANGLE_HEIGHT);
 	}
 	/**
