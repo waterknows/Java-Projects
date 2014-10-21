@@ -1,7 +1,9 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 /**
 This frame contains a moving rectangle.
@@ -20,17 +22,24 @@ public class RectangleFrame extends JFrame
 		{
 			//Function to check 
 				
-			scene.moveRectangleBy(1, 1);
+			scene.moveRectangleBy();
 		}
 	}
 	public RectangleFrame()
 	{
 		scene = new RectangleComponent();
-		add(scene);
+		createPanel();
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		ActionListener listener = new TimerListener();
-		final int DELAY = 100; // Milliseconds between timer ticks
+		final int DELAY = 3; // Milliseconds between timer ticks
 		Timer t = new Timer(DELAY, listener);
 		t.start();
+	}
+	
+	public void createPanel() {
+		JPanel panel = new JPanel();
+		panel.setLayout(new BorderLayout());
+		panel.add(scene, BorderLayout.CENTER);
+		add(panel);
 	}
 }
