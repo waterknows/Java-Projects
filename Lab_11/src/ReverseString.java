@@ -13,9 +13,7 @@ public class ReverseString {
 	}
 	
 	public static String recursiveReverse(String text){
-		if(text.length() == 1)
-			return text;
-		else
-			return recursiveReverse(text.substring(1)) + text.substring(0,1);
+		return text.length() == 1 ? text : 
+			recursiveReverse(text.substring(1)) + text.substring(0,1);
 	}
 }
