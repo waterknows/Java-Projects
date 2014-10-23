@@ -1,16 +1,28 @@
-import javax.swing.Timer;
 
 
 public class ReverseString {
 
 	public static void main(String[] args) {
 		final int DELAY = 1;
-		String text = "Hello!";
-		String reversed = recursiveReverse(text);
+		String text = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+		
+		long startRecursive = System.currentTimeMillis();
+		String reversedRecursive = recursiveReverse(text);
+		long endRecursive = System.currentTimeMillis();
+		long elapsedRecursive = endRecursive - startRecursive;
+		
+		long startIterative = System.currentTimeMillis();
+		String reversedIterative = iterativeReverse(text);
+		long endIterative = System.currentTimeMillis();
+		long elapsedIterative = endIterative - startIterative;
+		
 		System.out.println("Original string: " + text);
-		System.out.println("Reversed string: " + reversed);
-//		Timer t = new Timer(DELAY,);
+		System.out.println("Reversed string: " + reversedRecursive);
+		System.out.println("Elapsed Time for Recursive Reverse: " + elapsedRecursive);
+		System.out.println("Elapsed Time for Iterative Reverse: " + elapsedIterative);
+		
 	}
+	
 	
 	public static String recursiveReverse(String text){
 		return text.length() == 1 ? text : 
