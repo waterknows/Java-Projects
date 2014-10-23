@@ -16,4 +16,11 @@ public class ReverseString {
 		return text.length() == 1 ? text : 
 			recursiveReverse(text.substring(1)) + text.substring(0,1);
 	}
+
+	
+	public static String iterativeReverse(String text) {
+		for (int i = 0; i < text.length(); i++)
+			text = text.substring(1) + text.charAt(0);
+		return text;
+	}
 }
