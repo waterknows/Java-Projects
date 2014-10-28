@@ -16,7 +16,7 @@ public class mainRunner {
 		int start_c = Position[1];
 
 		printMaze(Maze);
-		rec
+		recursiveWalk(Maze,4,start_r,start_c);
 	}
 	
 	public static int[] getPosition(char[][] Maze){
@@ -123,7 +123,7 @@ public class mainRunner {
 	//8. Do this for each exit
 	
 	
-	boolean recursiveWalk(char[][] array, 
+	static boolean recursiveWalk(char[][] array, 
 			int direction,
 			int current_r, int current_c) {
 
@@ -148,7 +148,7 @@ public class mainRunner {
 		return false;
 	}
 	
-	boolean checkExit(int current_r, int current_c) {
+	static boolean checkExit(int current_r, int current_c) {
 		if(current_r == 0 || current_r == HEIGHT - 1)
 			return true;
 		if(current_c == 0 || current_c == WIDTH - 1)
@@ -156,7 +156,7 @@ public class mainRunner {
 		return false;
 	}
 	
-	void scanavailable(boolean[] availablespots, char[][] array,
+	static void scanavailable(boolean[] availablespots, char[][] array,
 								 int direction,
 								 int current_r, int current_c) {
 		// check left
