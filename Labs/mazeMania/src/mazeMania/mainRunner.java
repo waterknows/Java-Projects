@@ -16,7 +16,7 @@ public class mainRunner {
 		int start_c = Position[1];
 
 		printMaze(Maze);
-		recursiveWalk(Maze,4,start_r,start_c);
+		recursiveWalk(Maze,start_r,start_c);
 	}
 	
 	public static int[] getPosition(char[][] Maze){
@@ -124,30 +124,33 @@ public class mainRunner {
 	
 	
 	static boolean recursiveWalk(char[][] array, 
-			int direction,
 			int current_r, int current_c) {
 
+		System.out.println("Printing position of path : ");
+		System.out.println("(" + current_r + "," +  current_c + ")" );
 		if(checkExit(current_r, current_c)) {
 			System.out.println("Exit coordinate : " + current_r + "," + current_c);
 			return true;
 		}
 
-		boolean [] availablespots = new boolean[4]; // left, down, right, up
-		scanavailable(availablespots, array, direction, current_r, current_r);
 		
-		if(availablespots[0])
-			return recursiveWalk(array, 0, current_r, current_c - 1);
-		if(availablespots[1])
-			return recursiveWalk(array, 0, current_r + 1, current_c);
-		if(availablespots[2])
-			return recursiveWalk(array, 0, current_r, current_c + 1);
-		if(availablespots[3])
-			return recursiveWalk(array, 0, current_r - 1, current_c);
-
-		// if its a dead end
+		if(checkIfNotWall(array, current_r, current_c - 1))
+				return recursiveWalk(array,  current_r, current_c - 1);
+		if(checkIfNotWall(array, current_r + 1, current_c))
+				return recursiveWalk(array,  current_r + 1, current_c);
+		if(checkIfNotWall(array, current_r, current_c + 1))
+				return recursiveWalk(array,  current_r, current_c + 1);
+		if(checkIfNotWall(array, current_r -1 , current_c))
+				return recursiveWalk(array,  current_r - 1, current_c);
+		
 		return false;
 	}
 	
+	static boolean checkIfNotWall(char[][] array, int row, int col) {
+		if(array[row][col] == ' ')
+			return true;
+		return false;
+	}
 	static boolean checkExit(int current_r, int current_c) {
 		if(current_r == 0 || current_r == HEIGHT - 1)
 			return true;
