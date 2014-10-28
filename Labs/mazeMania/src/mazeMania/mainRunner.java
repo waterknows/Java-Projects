@@ -6,12 +6,19 @@ public class mainRunner {
 	public static final int WIDTH = 9;
 	public static final int HEIGHT = 9;
 	public static final int NUM_OF_EXITS = 10;
+	
+	
 	public static void main(String[] args) {
 		char[][] Maze = createMaze();
 		int[] Position = getPosition(Maze);
-		Maze[Position[0]][Position[1]] = 'X';
+//		Maze[Position[0]][Position[1]] = 'X';
+		int start_r = Position[0];
+		int start_c = Position[1];
+
 		printMaze(Maze);
+		rec
 	}
+	
 	public static int[] getPosition(char[][] Maze){
 		Random Rand = new Random();
 		int[] pos = new int[2];
@@ -25,6 +32,7 @@ public class mainRunner {
 		return pos;
 		
 	}
+	
 	public static char[][] createMaze(){
 		char[][] Maze = new char[HEIGHT][WIDTH];
 		for(int i = 0; i < HEIGHT; i++){
@@ -60,6 +68,7 @@ public class mainRunner {
 
 		return Maze;
 	}
+	
 	public static void printMaze(char[][] Maze){
 		for(int i = 0; i < HEIGHT; i++){
 			for(char element : Maze[i])
@@ -68,6 +77,7 @@ public class mainRunner {
 		}
 				
 	}
+	
 //	public static void createRandomMaze(){
 //		char[][] Maze = new char[HEIGHT][WIDTH];
 //		//Fill Maze with walls
@@ -111,6 +121,70 @@ public class mainRunner {
 	//6. Create space at that direction (1 space)
 	//7. Keep repeating 4 & 5 & 6 until stop
 	//8. Do this for each exit
+	
+	
+	boolean recursiveWalk(char[][] array, 
+			int direction,
+			int current_r, int current_c) {
+
+		if(checkExit(current_r, current_c)) {
+			System.out.println("Exit coordinate : " + current_r + "," + current_c);
+			return true;
+		}
+
+		boolean [] availablespots = new boolean[4]; // left, down, right, up
+		scanavailable(availablespots, array, direction, current_r, current_r);
+		
+		if(availablespots[0])
+			return recursiveWalk(array, 0, current_r, current_c - 1);
+		if(availablespots[1])
+			return recursiveWalk(array, 0, current_r + 1, current_c);
+		if(availablespots[2])
+			return recursiveWalk(array, 0, current_r, current_c + 1);
+		if(availablespots[3])
+			return recursiveWalk(array, 0, current_r - 1, current_c);
+
+		// if its a dead end
+		return false;
+	}
+	
+	boolean checkExit(int current_r, int current_c) {
+		if(current_r == 0 || current_r == HEIGHT - 1)
+			return true;
+		if(current_c == 0 || current_c == WIDTH - 1)
+			return true;
+		return false;
+	}
+	
+	void scanavailable(boolean[] availablespots, char[][] array,
+								 int direction,
+								 int current_r, int current_c) {
+		// check left
+		availablespots[0] = (array[current_r][current_c - 1] == ' ' ? true : false);
+		// check down
+		availablespots[1] = (array[current_r + 1][current_c] == ' ' ? true : false);
+		// check right
+		availablespots[2] = (array[current_r][current_c + 1] == ' ' ? true : false);
+		// check up
+		availablespots[3] = (array[current_r - 1][current_c] == ' ' ? true : false);
+			
+		switch (direction) {
+		case 0:
+			availablespots[2] = false;
+			break;
+		case 1:
+			availablespots[3] = false;
+			break;
+		case 2:
+			availablespots[0] = false;
+			break;
+		case 3:
+			availablespots[1] = false;
+			break;
+		default:
+			break;
+		}
+	}
 	
 	
 	
