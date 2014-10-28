@@ -70,13 +70,15 @@ public class mainRunner {
 	}
 //	public static void createRandomMaze(){
 //		char[][] Maze = new char[HEIGHT][WIDTH];
+//		//Fill Maze with walls
 //		for(int i = 0; i < HEIGHT; i++){
 //			for(int j = 0; j < WIDTH; j++)
 //				Maze[i][j] = '*';
 //		}
-//		
+//		//Gets number of exits
 //		Random Rand = new Random();
 //		int exitNum = Rand.nextInt(NUM_OF_EXITS);
+//		//Adds the exits to the maze
 //		for(int i = 0; i < exitNum; i++){
 //			int type = Rand.nextInt(1);
 //			int row, col;
@@ -93,6 +95,10 @@ public class mainRunner {
 //					row = HEIGHT - 1;
 //			}
 //			Maze[row][col] = ' ';
+//		}
+//		//
+//		for(int i = 0; i < HEIGHT; i++){
+//			if(Maze[i][0])
 //		}
 //		
 //	}
