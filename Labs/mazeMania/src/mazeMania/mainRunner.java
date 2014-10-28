@@ -1,5 +1,7 @@
 package mazeMania;
 
+import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class mainRunner {
@@ -11,12 +13,19 @@ public class mainRunner {
 	public static void main(String[] args) {
 		char[][] Maze = createMaze();
 		int[] Position = getPosition(Maze);
+		ArrayList<Point> truePath = new ArrayList<Point>();
 //		Maze[Position[0]][Position[1]] = 'X';
 		int start_r = Position[0];
 		int start_c = Position[1];
 
-		printMaze(Maze);
-		recursiveWalk(Maze,start_r,start_c);
+//		printMaze(Maze);
+		printMazeAt(Maze, start_r, start_c);
+		System.out.println("-------------------------");
+		boolean isComplete = false;
+		recursiveWalk(Maze,-1, -1, start_r,start_c, truePath, isComplete);
+		for (Point point : truePath) {
+			printMazeAt(Maze, point.x, point.y);
+		}
 	}
 	
 	public static int[] getPosition(char[][] Maze){
@@ -78,6 +87,18 @@ public class mainRunner {
 				
 	}
 	
+	public static void printMazeAt(char[][] Maze, int r, int c){
+		for(int i = 0; i < HEIGHT; i++){
+			for (int j = 0; j < Maze[i].length; j++) {
+				if( i == r && j == c)
+					System.out.print( "O" + " ");
+				else
+					System.out.print(Maze[i][j]+ " ");
+			}
+			System.out.println();
+		}
+		System.out.println("-------------------------");
+	}
 //	public static void createRandomMaze(){
 //		char[][] Maze = new char[HEIGHT][WIDTH];
 //		//Fill Maze with walls
@@ -124,25 +145,58 @@ public class mainRunner {
 	
 	
 	static boolean recursiveWalk(char[][] array, 
-			int current_r, int current_c) {
+			int prev_r, int prev_c,
+			int current_r, int current_c, ArrayList<Point> truePath, boolean isComplete) {
 
-		System.out.println("Printing position of path : ");
-		System.out.println("(" + current_r + "," +  current_c + ")" );
+//		System.out.println("Printing position of path : ");
+//		System.out.println("(" + current_r + "," +  current_c + ")" );
+		printMazeAt(array, current_r, current_c);
+		
 		if(checkExit(current_r, current_c)) {
 			System.out.println("Exit coordinate : " + current_r + "," + current_c);
+			isComplete = true;
 			return true;
 		}
 
+		boolean[] holdPath = new boolean[4];
 		
-		if(checkIfNotWall(array, current_r, current_c - 1))
-				return recursiveWalk(array,  current_r, current_c - 1);
-		if(checkIfNotWall(array, current_r + 1, current_c))
-				return recursiveWalk(array,  current_r + 1, current_c);
-		if(checkIfNotWall(array, current_r, current_c + 1))
-				return recursiveWalk(array,  current_r, current_c + 1);
-		if(checkIfNotWall(array, current_r -1 , current_c))
-				return recursiveWalk(array,  current_r - 1, current_c);
+		if(checkIfNotWall(array, current_r, current_c - 1) 
+				&& 
+				(current_r != prev_r && (current_c - 1) != prev_c) )
+				holdPath[0] = recursiveWalk(array, 
+						current_r, current_c,  
+						current_r, current_c - 1,
+						truePath,
+						isComplete);
+		if(checkIfNotWall(array, current_r + 1, current_c)
+				&& 
+				(current_r + 1 != prev_r && current_c != prev_c) )
+				holdPath[1] = recursiveWalk(array,
+						current_r, current_c,
+						current_r + 1, current_c,
+						truePath,
+						isComplete);
+		if(checkIfNotWall(array, current_r, current_c + 1)
+				&& 
+				(current_r != prev_r && (current_c + 1) != prev_c) )
+				holdPath[2] = recursiveWalk(array,
+						current_r, current_c,
+						current_r, current_c + 1,
+						truePath,
+						isComplete);
+		if(checkIfNotWall(array, current_r -1 , current_c)
+				&& 
+				(current_r - 1 != prev_r && (current_c) != prev_c) )
+				holdPath[3] = recursiveWalk(array,
+						current_r, current_c,
+						current_r - 1, current_c,
+						truePath,
+						isComplete);
 		
+		
+		if(isComplete)
+			truePath.add(new Point(current_r, current_c));
+
 		return false;
 	}
 	
