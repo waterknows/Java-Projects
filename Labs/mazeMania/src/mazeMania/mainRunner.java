@@ -1,5 +1,3 @@
-package mazeMania;
-
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,8 +19,7 @@ public class mainRunner {
 //		printMaze(Maze);
 		printMazeAt(Maze, start_r, start_c);
 		System.out.println("-------------------------");
-		boolean isComplete = false;
-		recursiveWalk(Maze,-1, -1, start_r,start_c, truePath, isComplete);
+		recursiveWalk(Maze,-1, -1, start_r,start_c, truePath);
 		for (Point point : truePath) {
 			printMazeAt(Maze, point.x, point.y);
 		}
@@ -146,57 +143,62 @@ public class mainRunner {
 	
 	static boolean recursiveWalk(char[][] array, 
 			int prev_r, int prev_c,
-			int current_r, int current_c, ArrayList<Point> truePath, boolean isComplete) {
+			int current_r, int current_c, ArrayList<Point> truePath) {
 
-//		System.out.println("Printing position of path : ");
 //		System.out.println("(" + current_r + "," +  current_c + ")" );
-		printMazeAt(array, current_r, current_c);
+		//printMazeAt(array, current_r, current_c);
 		
 		if(checkExit(current_r, current_c)) {
 			System.out.println("Exit coordinate : " + current_r + "," + current_c);
-			isComplete = true;
+            printMazeAt(array, current_r, current_c);
 			return true;
 		}
 
-		boolean[] holdPath = new boolean[4];
 		
 		if(checkIfNotWall(array, current_r, current_c - 1) 
 				&& 
 				(current_r != prev_r && (current_c - 1) != prev_c) )
-				holdPath[0] = recursiveWalk(array, 
+				if (recursiveWalk(array, 
 						current_r, current_c,  
 						current_r, current_c - 1,
-						truePath,
-						isComplete);
+                        truePath)) {
+                        truePath.add(new Point(current_r, current_c));
+                        printMazeAt(array, current_r, current_c);
+                }
 		if(checkIfNotWall(array, current_r + 1, current_c)
 				&& 
 				(current_r + 1 != prev_r && current_c != prev_c) )
-				holdPath[1] = recursiveWalk(array,
+				if (recursiveWalk(array,
 						current_r, current_c,
 						current_r + 1, current_c,
-						truePath,
-						isComplete);
+                        truePath)) {
+                        truePath.add(new Point(current_r, current_c));
+                        printMazeAt(array, current_r, current_c);
+                }
 		if(checkIfNotWall(array, current_r, current_c + 1)
 				&& 
 				(current_r != prev_r && (current_c + 1) != prev_c) )
-				holdPath[2] = recursiveWalk(array,
+				if (recursiveWalk(array,
 						current_r, current_c,
 						current_r, current_c + 1,
-						truePath,
-						isComplete);
+                        truePath)) {
+                        truePath.add(new Point(current_r, current_c));
+                        printMazeAt(array, current_r, current_c);
+                }
 		if(checkIfNotWall(array, current_r -1 , current_c)
 				&& 
 				(current_r - 1 != prev_r && (current_c) != prev_c) )
-				holdPath[3] = recursiveWalk(array,
+				if (recursiveWalk(array,
 						current_r, current_c,
 						current_r - 1, current_c,
-						truePath,
-						isComplete);
-		
-		
-		if(isComplete)
-			truePath.add(new Point(current_r, current_c));
+						truePath)) {
+                        truePath.add(new Point(current_r, current_c));
+                        printMazeAt(array, current_r, current_c);
+                    }
 
+
+			truePath.add(new Point(current_r, current_c));
+    
 		return false;
 	}
 	
