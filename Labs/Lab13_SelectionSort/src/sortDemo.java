@@ -4,14 +4,16 @@ import java.util.Random;
 public class sortDemo {
 
     public static void main (String[] args) {
-    	final int MAX = 50;
+    	final int MAX = 10;
     	final int VAL = 100;
     	int[] array = new int[MAX];
         Random Rand = new Random();
         for(int i = 0; i < MAX; i++)
         	array[i] = Rand.nextInt(VAL);
+        for(int i = 0; i < MAX/2; i++)
+        	array[2*i] = 34;
         print(array);
-        sortOriginal(array,0,MAX-1);
+        sortModified(array,0,MAX-1);
         print(array);
     }
     public static void sortOriginal(int[] array, int from, int to){
@@ -48,12 +50,12 @@ public class sortDemo {
     public static void sortModified(int[] array, int from, int to){
     	if(from >= to)
     		return;
-    	
+
     	int pivot = array[from];
-    	int i = from, j = to + 1;
+    	int i = from + 1, j = to;
     	int p = from + 1, q = to;
-    	while(i < j){
-    		i++; j--;
+    	while(i <= j){
+            print(array);   	
     		while(array[i] < pivot) 
     			i++;
     		while(array[j] > pivot) 
@@ -68,20 +70,21 @@ public class sortDemo {
 				swap(array,j,q);
 				q--;
 			}
+			i++; j--;
     	}
-    	while(p >= 0){
+    	while(p >= 0 && j >= 0){
     		swap(array,j,p);
     		p--;
     		j--;
     	}
-    	while(q <= to){
+    	while(q <= to && i <= to){
     		swap(array,i,q);
     		i++;
     		q++;
     	}
     	
-    	sortModified(array,from,i);
-    	sortModified(array,j,to);
+    	sortModified(array,from,j);
+    	sortModified(array,i,to);
     }
 //    public static int partitionModified(int[] array, int from, int to){
 //
