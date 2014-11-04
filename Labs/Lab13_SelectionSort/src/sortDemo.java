@@ -9,25 +9,27 @@ public class sortDemo {
     	int[] array = new int[MAX];
         Random Rand = new Random();
         for(int i = 0; i < MAX; i++)
-        	array[i] = Rand.nextInt(100);
+        	array[i] = Rand.nextInt(VAL);
         print(array);
-        sort(array,0,MAX-1);
+        sortOriginal(array,0,MAX-1);
         print(array);
     }
-    public static void sort(int[] array, int from, int to){
+    public static void sortOriginal(int[] array, int from, int to){
     	if(from >= to)
     		return;
     	int p = partition(array,from,to);
-    	sort(array,from,p);
-    	sort(array,p+1,to);
+    	sortOriginal(array,from,p);
+    	sortOriginal(array,p+1,to);
     }
     public static int partition(int[] array, int from, int to){
     	int pivot = array[from];
-    	int i = from - 1;
-    	int j = to + 1;
+    	int i = from - 1, j = to + 1;
     	while(i < j){
-    		i++; while(array[i] < pivot) {i++;}
-    		j--; while(array[j] > pivot) {j--;}
+    		i++; j--;
+    		while(array[i] < pivot) 
+    			i++;
+    		while(array[j] > pivot) 
+    			j--;
     		if(i < j)
     			swap(array,i,j);
     	}
@@ -43,4 +45,46 @@ public class sortDemo {
     		System.out.print(e + " ");
     	System.out.println();
     }
+    public static void sortModified(int[] array, int from, int to){
+    	if(from >= to)
+    		return;
+    	
+    	int pivot = array[from];
+    	int i = from, j = to + 1;
+    	int p = from + 1, q = to;
+    	while(i < j){
+    		i++; j--;
+    		while(array[i] < pivot) 
+    			i++;
+    		while(array[j] > pivot) 
+    			j--;
+    		if(i < j)
+    			swap(array,i,j);
+			if(array[i] == pivot){
+				swap(array,i,p);
+				p++;
+			}
+			if(array[j] == pivot){
+				swap(array,j,q);
+				q--;
+			}
+    	}
+    	while(p >= 0){
+    		swap(array,j,p);
+    		p--;
+    		j--;
+    	}
+    	while(q <= to){
+    		swap(array,i,q);
+    		i++;
+    		q++;
+    	}
+    	
+    	sortModified(array,from,i);
+    	sortModified(array,j,to);
+    }
+//    public static int partitionModified(int[] array, int from, int to){
+//
+//    }
+    
 }
