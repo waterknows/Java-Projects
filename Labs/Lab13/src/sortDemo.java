@@ -13,10 +13,51 @@ public class sortDemo {
         for(int i = 0; i < MAX/2; i++){
         	array[2*i] = 4;
         }
-//        print(array,-1,-1);
-        sortModified(array,0,MAX-1);
-//        print(array);
+        
+        
     }
+
+    public static void threWPartition(int[] a, int from, int to) {
+    	
+    	if(from < to)
+    		return;
+    		
+    	int lo = a[from];
+    	int i = from + 1, j = to;
+    	int p = from + 1, q = to;
+    	
+    	
+    	// Part A : Before crossing over
+    	while(i <= j) {
+    		while(a[i] < lo)
+    			i++;
+    		while(a[j] > lo)
+    			j--;
+    		swap(a, i, j);
+    		if(a[i] == lo)
+    			swap(a, i, p++);
+    		if(a[j] == q)
+    			swap(a, j, q--);
+    	}
+    	
+    	// Phase 2 : After crossing
+    	//scan left part
+    	while(p >= from) {
+    		if(a[p] == lo)
+    			swap(a, p, j--);
+    		p--;
+    	}
+    	while(q >= to) {
+    		if(a[q] == lo)
+    			swap(a, q, i++);
+    		q++;
+    	}
+    		
+    	// Phase infinity
+    	threWPartition(a, from, j);
+    	threWPartition(a, i, to);    	
+    }
+    
     public static void sortOriginal(int[] array, int from, int to){
     	if(from >= to)
     		return;
@@ -24,6 +65,7 @@ public class sortDemo {
     	sortOriginal(array,from,p);
     	sortOriginal(array,p+1,to);
     }
+    
     public static int partition(int[] array, int from, int to){
     	int pivot = array[from];
     	int i = from - 1, j = to + 1;
@@ -38,11 +80,13 @@ public class sortDemo {
     	}
     	return j;
     }
+    
     public static void swap(int[] array, int i, int j){
     	int temp = array[i];
     	array[i] = array[j];
     	array[j] = temp;
     }
+    
     public static void print(int[] array, int i, int j){
 //    	for(int e : array)
 //    		System.out.print(e + " ");
@@ -56,70 +100,5 @@ public class sortDemo {
     	}
     	System.out.println();
     }
-    public static void sortModified(int[] array, int from, int to){
-    	if(from > to)
-    		return;
-
-    	int pivot = array[from];
-    	int i = from + 1, j = to;
-    	int p = from + 1, q = to;
-    	while(i <= j){
-            print(array,i,j);   	
-    		while(array[i] < pivot){
-    			print(array,i,j);  
-    			i++;
-    		}
-    		while(array[j] > pivot) {
-    			print(array,i,j);  
-    			j--;
-    		}
-    		if(i < j){
-    			swap(array,i,j);
-    			print(array,i,j);  
-    		}
-    		
-			if(array[i] == pivot){
-				swap(array,i,p);
-				print(array,i,j);  
-				p++;
-			}
-			if(array[j] == pivot){
-				swap(array,j,q);
-				print(array,i,j);  
-				q--;
-			}
-			if(i == j){
-				j--;
-				if(array[j] == pivot){
-					j++;
-					i--;
-				}
-				break;
-			}
-			i++; j--;
-			print(array,i,j); 
-    	}
-    	print(array,i,j);
-    	System.out.println();
-    	p--; q++;
-    	while(p >= 0 && j >= 0){
-    		swap(array,j,p);
-    		print(array,i,j);
-    		p--;
-    		j--;
-    	}
-    	while(q <= to && i <= to){
-    		swap(array,i,q);
-    		print(array,i,j);
-    		i++;
-    		q++;
-    	}
-    	System.out.println("End ");
-    	sortModified(array,from,j);
-    	sortModified(array,i,to);
-    }
-//    public static int partitionModified(int[] array, int from, int to){
-//
-//    }
     
 }
